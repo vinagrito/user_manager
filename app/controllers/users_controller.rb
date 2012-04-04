@@ -54,6 +54,7 @@ class UsersController < ApplicationController
   def index
     index_columns ||= [:id,:username,:email,:name,:lastname]
     
+    
     current_page = params[:page] ? params[:page].to_i : 1
     rows_per_page = params[:rows] ? params[:rows].to_i : 10
 

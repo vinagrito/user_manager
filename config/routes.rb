@@ -1,7 +1,7 @@
 UserManager::Application.routes.draw do
   
   
-  root :to => "access#new"
+  root :to => "sessions#new"
   
   get "log_in" => "sessions#new", :as => "log_in"
   
