@@ -5,13 +5,6 @@ class UsersController < ApplicationController
   
   protect_from_forgery :except => [:post_data]
   
-  # Don't forget to edit routes if you're using RESTful routing
-  # 
-  #resources :Users,:only => [:index] do
-  #   collection do
-  #     post "post_data"
-  #   end
-  # end
 
   def post_data
     message=""

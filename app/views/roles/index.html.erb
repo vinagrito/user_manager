@@ -1,21 +1,10 @@
 <h1>Listing roles</h1>
 
-<table>
-  <tr>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @roles.each do |role| %>
-  <tr>
-    <td><%= link_to 'Show', role %></td>
-    <td><%= link_to 'Edit', edit_role_path(role) %></td>
-    <td><%= link_to 'Destroy', role, confirm: 'Are you sure?', method: :delete %></td>
-  </tr>
-<% end %>
-</table>
-
-<br />
-
-<%= link_to 'New Role', new_role_path %>
+<%=raw jqgrid("Listing roles", "roles", "/roles", 
+[ 
+   
+  { :field => "id", :label => "id",:width => 50 },    
+  { :field => "role_name", :label => "name",:width => 120,:editable => true } 
+  ] , {:add => true,:edit => true,:delete => true,:view => true,:edit_url => post_data_roles_url,:sortable_rows => 'true'}  
+  ) %>
+<p><%= link_to "Back to users list",users_path %></p>

@@ -15,6 +15,11 @@ UserManager::Application.routes.draw do
   
   resources :sessions  
   
+  resources :roles,:only => [:index] do
+    collection do
+      post "post_data"
+    end
+  end
   
   
   # The priority is based upon order of creation:
