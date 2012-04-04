@@ -6,6 +6,7 @@ gem 'rails', '3.2.3'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'mysql2'
+gem 'sqlite3'
 gem "will_paginate", "~> 3.0"
 gem "bcrypt-ruby", :require => "bcrypt"
 gem 'acts_as_list'
