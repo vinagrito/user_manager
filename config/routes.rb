@@ -13,6 +13,8 @@ UserManager::Application.routes.draw do
     end
   end
   
+  resources :users
+  
   resources :sessions  
   
   resources :roles,:only => [:index] do

@@ -12,6 +12,8 @@ class User < ActiveRecord::Base
   
   before_save :create_hashed_password
 	after_save :clear_password
+	before_update :clear_roles
+
   
   def admin?
     roles.map{|r| r.role_name}.include?('Admin')
@@ -40,4 +42,10 @@ class User < ActiveRecord::Base
 	def clear_password
 		self.password = nil
 	end
+	
+	protected
+  def clear_roles
+    roles.clear
+  end
+  
 end

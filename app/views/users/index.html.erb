@@ -1,15 +1,26 @@
 
-<h1>Listing users</h1>
 
-<%=raw jqgrid("Listing users", "users", "/users", 
-[ 
-   
+<%=raw jqgrid("List of users", "users", "/users", 
+[    
   { :field => "id", :label => "id",:width => 50 },    
   { :field => "username", :label => "username",:width => 120,:editable => true },    
   { :field => "email", :label => "email",:width => 120,:editable => true },    
   { :field => "name", :label => "name",:width => 100,:editable => true },    
   { :field => "lastname", :label => "lastname",:width => 100,:editable => true },
-  { :field => "roles", :label => "roles",:width => 180 }   
-  ] , {:add => true,:edit => true,:delete => true,:view => true,:edit_url => post_data_users_url,:sortable_rows => 'true'}  
+  { :field => "groups", :label => "roles",:width => 180}   
+  ] , {:LOQUESEA => 'true',:add => true,:edit => true,:delete => true,:error_handler => "s",:inline_edit => 'true',:edit_url => post_data_users_url,:sortable_rows => 'true'}  
   ) %>
-<p><%= link_to "Edit roles",roles_path%></p>
+<p><%= link_to "Edit roles",roles_path%>
+<%= link_to "| Edit user",{:action => 'edit',:id => 1},{:class => 'editLink hide'}%></p>
+
+<script type'text/javascript'>
+	$(function(){
+		var _last = new String("1")
+		$('#users').click(function(){
+			var _last = new String($("tr[aria-selected=true] td:first").html())
+			$(".editLink").attr("href","/users/edit/"+ _last)
+			$(".editLink").addClass('show')			
+		})
+		
+	})
+</script>

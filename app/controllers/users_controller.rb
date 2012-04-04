@@ -45,7 +45,7 @@ class UsersController < ApplicationController
   
   
   def index
-    index_columns ||= [:id,:username,:email,:name,:lastname]
+    index_columns ||= [:id,:username,:email,:name,:lastname,:groups]
     
     
     current_page = params[:page] ? params[:page].to_i : 1
@@ -59,11 +59,44 @@ class UsersController < ApplicationController
     end
     
     @users = User.paginate(conditions)
+    @users.each do |user|
+      user.groups = user.roles.collect {|role| role.role_name}.join(',')
+    end
 
+       
+    
     total_entries = @users.total_entries
     
     respond_with(@users) do |format|
       format.json { render :json => @users.to_jqgrid_json(index_columns, current_page, rows_per_page, total_entries)}  
+    end
+  end
+  
+  def edit
+    @user = User.find(params[:id])
+    @roles = Role.all
+  end
+  
+  def update
+    @user = User.find(params[:user][:id])
+    #params[user]
+    if @user
+      
+      @user.name     = params[:user][:name]
+      @user.lastname = params[:user][:lastname]
+      @user.email    = params[:user][:email]
+      @user.username = params[:user][:username]
+      
+      if @user.save      
+        params[:user][:roles].each do |role|
+          @user.roles << Role.find(role) if role.present? #&& !@user.roles.include?(role)
+        end
+      end
+      flash[:notice] = 'User updated!.'
+      redirect_to users_path
+    else
+      flash[:notice] = @user.errors.full_messages
+      render 'edit'
     end
   end
   
