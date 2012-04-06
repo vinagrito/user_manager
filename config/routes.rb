@@ -7,6 +7,8 @@ UserManager::Application.routes.draw do
   
   get "log_out" => "sessions#logout", :as => "log_out"
   
+  
+  
   resources :users,:only => [:index] do
     collection do
       post "post_data"

@@ -1,6 +1,6 @@
 class SessionsController < ApplicationController
     
-  
+  before_filter :logged_admin,:except => ['new','create']
   def new
   end
 

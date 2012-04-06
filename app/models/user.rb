@@ -7,7 +7,6 @@ class User < ActiveRecord::Base
   validates_presence_of :name
   validates_presence_of :lastname
   validates_presence_of :username,:uniqueness => true
-  #validates_presence_of :password
   validates_confirmation_of :password,:on => :update
   
   before_save :create_hashed_password

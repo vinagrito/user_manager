@@ -1,6 +1,5 @@
 class UsersController < ApplicationController
   
-  
   respond_to :html,:json
   
   protect_from_forgery :except => [:post_data]
@@ -99,6 +98,5 @@ class UsersController < ApplicationController
       render 'edit'
     end
   end
-  
   
 end

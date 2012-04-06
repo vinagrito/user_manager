@@ -12,31 +12,5 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require jqgrid
 //= require_tree .
 
-$(function(){
-	
-	$("#list1").jqGrid({
-	   	url:'http//:localhost:3000/users/jqgrid_data',
-		datatype: "json",
-	   	colNames:['ID','Username', 'Email', 'Name','Lastname'],
-	   	colModel:[
-	   		{name:'id',index:'id', width:40},
-	   		{name:'username',index:'username', width:90},
-	   		{name:'email',index:'email', width:100},
-	   		{name:'name',index:'name', width:80, align:"left"},
-	   		{name:'lastname',index:'lastname', width:80, align:"left"}
-	   	],
-	   	rowNum:10,
-	   	rowList:[10,20,30],
-	   	pager: '#pager1',
-	   	sortname: 'id',
-	    viewrecords: true,
-	    sortorder: "asc",
-	    caption:"JSON Example"
-	});
-	$("#list1").jqGrid('navGrid','#pager1',{edit:true,add:true,del:true});
-		
-	  
-})
