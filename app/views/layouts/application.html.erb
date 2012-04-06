@@ -17,9 +17,9 @@
 		Logged in as <%= current_user.username%> | <%= link_to 'logout', log_out_path%>
 	<%end%>
 </div>
-<%# if logged_admin%>
-	<%= yield %>
-<%#end%>
+
+<%= yield %>
+
 
 </body>
 </html>

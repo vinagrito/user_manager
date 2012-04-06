@@ -8,19 +8,20 @@
   { :field => "name", :label => "name",:width => 100,:editable => true },    
   { :field => "lastname", :label => "lastname",:width => 100,:editable => true },
   { :field => "groups", :label => "roles",:width => 180}   
-  ] , {:LOQUESEA => 'true',:add => true,:edit => true,:delete => true,:error_handler => "s",:inline_edit => 'true',:edit_url => post_data_users_url,:sortable_rows => 'true'}  
+  ] , {:add => true,:edit => true,:delete => true,:error_handler => "s",:inline_edit => 'true',:edit_url => post_data_users_url,:sortable_rows => 'true'}  
   ) %>
 <p><%= link_to "Edit roles",roles_path%>
 <%= link_to "| Edit user",{:action => 'edit',:id => 1},{:class => 'editLink hide'}%></p>
 
 <script type='text/javascript'>
 	$(function(){
-		var _last = new String("1")
+		var _last = new String()		
 		$('#users').click(function(){
-			var _last = new String($("tr[aria-selected=true] td:first").html())
+			_last = $("tr[aria-selected=true] td:first").html()
 			$(".editLink").attr("href","/users/edit/"+ _last)
-			$(".editLink").addClass('show')			
+			$(".editLink").addClass('show')
 		})
-
+	
 	})
 </script>
+

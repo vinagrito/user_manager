@@ -7,12 +7,16 @@ class SessionsController < ApplicationController
   def create
     @user = User.authenticate(params[:username],params[:password])
     
-    if @user
+    if @user && @user.admin?      
       session[:username] = @user.username
       flash[:notice] = "Welcome " + session[:username].to_s
       redirect_to users_path
     else
-      flash[:notice] = "Invalid email or password!."
+      if @user.admin?
+        flash[:notice] = "Invalid email or password!."
+      else
+        flash[:notice] = "You have no rights to access this page!."
+      end
       render 'new'
     end
   end
