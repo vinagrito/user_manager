@@ -11,7 +11,7 @@
   ] , {:add => true,:edit => true,:delete => true,:error_handler => "s",:inline_edit => 'true',:edit_url => post_data_users_url,:sortable_rows => 'true'}  
   ) %>
 <p><%= link_to "Edit roles",roles_path%>
-<%= link_to "| Edit user",{:action => 'edit',:id => 1},{:class => 'editLink hide'}%></p>
+<%= link_to "| Edit user",{:action => 'edit'},{:class => 'editLink hide'}%></p>
 
 <script type='text/javascript'>
 	$(function(){
