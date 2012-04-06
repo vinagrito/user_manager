@@ -16,4 +16,12 @@ After running the migrations make sure to seed the database for it to have some 
 
 Go to localhost:3000/log_in for the initial page
 
+Initially access is allowed using the next credentials:
+	username: superadmin
+	password: password
+
 Once a person has logged in into the system he'll automatically have the rights to manipulate every other user (including him self). 
+
+
+
+
