@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jqgrid
 //= require_tree .
 
 $(function(){

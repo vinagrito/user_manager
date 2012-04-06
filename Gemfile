@@ -10,6 +10,12 @@ gem 'sqlite3'
 gem "will_paginate", "~> 3.0"
 gem "bcrypt-ruby", :require => "bcrypt"
 
+group :development, :test do
+  gem 'rspec-rails'
+end
+
+gem "rails-asset-jqueryui"
+gem "rails-asset-jqgrid"
 
 # Gems used only for assets and not required
 # in production environments by default.

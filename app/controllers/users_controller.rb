@@ -79,13 +79,13 @@ class UsersController < ApplicationController
   
   def update
     @user = User.find(params[:user][:id])
-    #params[user]
+    
     if @user
-      
       @user.name     = params[:user][:name]
       @user.lastname = params[:user][:lastname]
       @user.email    = params[:user][:email]
       @user.username = params[:user][:username]
+      @user.password = params[:user][:password]   
       
       if @user.save      
         params[:user][:roles].each do |role|
